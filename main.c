@@ -352,7 +352,10 @@ __interrupt void ISR_ESCAN_IF(void)
 										else
 										{rotation_counter = rotation_counter / 4;}
 
-									lcd_display_num(rotation_counter,0);    		// to display the number of rotation from ESI in low digits of LCD
+									double cubic_meters_per_rotation = 0.001; // changeable based on the mechanic parts also it mostly provided by the manifacture
+							                double water_volume = rotation_counter * cubic_meters_per_rotation; // Calculate water volume in cubic meters
+							                   int intpart = (int)(water_volume);   // Get the integer part of the water volume
+
 
 										 __delay_cycles(8000000);
 
